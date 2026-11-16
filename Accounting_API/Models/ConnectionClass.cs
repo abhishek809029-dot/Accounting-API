@@ -131,9 +131,9 @@ namespace WebAtithya.Models
             };
         }
 
-        public string getMaxCode(string Prefix, string TableName, string UserName)
+        public string getMaxCode(string Prefix, string TableName)
         {
-            string query = $@"SELECT '{Prefix}' + CAST(ISNULL(MAX(CAST(SUBSTRING(Code, 3, LEN(Code)) AS INT)), 0) + 1 AS VARCHAR(10)) AS NextCode FROM {TableName} where UserName = '{UserName}'";
+            string query = $@"SELECT '{Prefix}' + CAST(ISNULL(MAX(CAST(SUBSTRING(Code, 3, LEN(Code)) AS INT)), 0) + 1 AS VARCHAR(10)) AS NextCode FROM {TableName}";
             return execute_scaler_string(query);
         }
 
